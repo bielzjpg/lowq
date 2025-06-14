@@ -4,6 +4,11 @@ import json
 import pandas as pd
 import altair as alt
 
+st.set_page_config(
+    page_title="Controle Financeiro",
+    page_icon="https://cdn-icons-png.flaticon.com/512/1170/1170576.png",
+    layout="wide"
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
