@@ -10,8 +10,8 @@ st.markdown("""
 
 html, body, [class*="css"] {
     font-family: 'Montserrat', sans-serif !important;
-    background-color: #ffffff !important;
-    color: #2c2c2c !important;
+    background-color: #121212 !important;  /* fundo escuro */
+    color: #e0e0e0 !important;              /* texto claro */
     margin: 0; padding: 0;
 }
 
@@ -25,7 +25,7 @@ main.block-container {
 /* Títulos principais */
 h1, .stMarkdown h1 {
     font-weight: 700 !important;
-    color: #EF1B24 !important;
+    color: #EF1B24 !important;   /* vermelho vivo */
     font-size: 2.8rem !important;
     margin-bottom: 0.4rem !important;
 }
@@ -38,12 +38,12 @@ h2, .stMarkdown h2 {
 
 /* Métricas com destaque */
 .stMetric {
-    background: #f9f0f0 !important;
+    background: #2a2a2a !important;  /* cinza escuro */
     border: 2px solid #EF1B24 !important;
     border-radius: 12px !important;
     padding: 18px !important;
     margin-bottom: 15px !important;
-    box-shadow: 0 3px 8px rgb(239 27 36 / 0.3);
+    box-shadow: 0 3px 8px rgb(239 27 36 / 0.6);
     transition: transform 0.3s ease;
 }
 
@@ -61,28 +61,29 @@ button, .stButton>button {
     padding: 10px 30px !important;
     font-size: 1.1rem !important;
     cursor: pointer !important;
-    box-shadow: 0 6px 12px rgb(239 27 36 / 0.5);
+    box-shadow: 0 6px 12px rgb(239 27 36 / 0.8);
     transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 button:hover, .stButton>button:hover {
     background-color: #b71c1c !important;
-    box-shadow: 0 8px 16px rgb(183 28 28 / 0.7);
+    box-shadow: 0 8px 16px rgb(183 28 28 / 0.9);
     transform: translateY(-3px);
 }
 
 button:active, .stButton>button:active {
     transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgb(183 28 28 / 0.8);
+    box-shadow: 0 4px 8px rgb(183 28 28 / 1);
 }
 
 /* Inputs de texto e número */
 input[type="text"], input[type="number"], textarea, .stTextArea>textarea {
+    background-color: #1f1f1f !important; /* fundo dos inputs escuro */
     border: 2px solid #EF1B24 !important;
     border-radius: 10px !important;
     padding: 10px !important;
     font-size: 1.05rem !important;
-    color: #2c2c2c !important;
+    color: #e0e0e0 !important;
     font-weight: 500 !important;
     transition: border-color 0.3s ease;
 }
@@ -94,30 +95,31 @@ input[type="text"]:focus, input[type="number"]:focus, textarea:focus {
 
 /* Cards de informações (exemplo para receitas/despesas) */
 .informacao-card {
-    background: #fff4f4;
+    background: #330000cc;  /* vermelho escuro transparente */
     border-left: 6px solid #EF1B24;
     padding: 15px 20px;
     margin-bottom: 12px;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgb(239 27 36 / 0.15);
+    box-shadow: 0 2px 6px rgb(239 27 36 / 0.5);
     transition: box-shadow 0.3s ease;
+    color: #f1f1f1;
 }
 
 .informacao-card:hover {
-    box-shadow: 0 6px 18px rgb(239 27 36 / 0.3);
+    box-shadow: 0 6px 18px rgb(239 27 36 / 0.8);
 }
 
 /* Estilizando tabelas e listas */
 table, ul, ol {
     font-size: 1.05rem !important;
-    color: #3a3a3a !important;
+    color: #ddd !important;
     margin-bottom: 20px !important;
 }
 
 /* Rodapé estilizado */
 footer {
     text-align: center;
-    color: #999999;
+    color: #888888;
     font-size: 0.9rem;
     margin-top: 40px;
 }
@@ -134,7 +136,7 @@ footer {
     padding: 14px 0;
     border-top: 3px solid #b71c1c;
     z-index: 9999;
-    box-shadow: 0 -2px 10px rgb(239 27 36 / 0.7);
+    box-shadow: 0 -2px 10px rgb(239 27 36 / 0.9);
 }
 #bottom-menu button {
     background: none;
@@ -151,11 +153,12 @@ footer {
     background-color: #b71c1c;
     color: #fff;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgb(183 28 28 / 0.8);
+    box-shadow: 0 4px 12px rgb(183 28 28 / 1);
     transform: scale(1.05);
 }
 </style>
 """, unsafe_allow_html=True)
+
 
 
 # --- Funções de dados ---
