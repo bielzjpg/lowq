@@ -3,8 +3,43 @@ from datetime import datetime, date
 import json
 import pandas as pd
 import altair as alt
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
-import streamlit as st
+
+# Definindo escopo da API
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
+
+# Autenticação com o arquivo JSON baixado
+creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
+client = gspread.authorize(creds)
+
+# Abrindo a planilha pelo nome
+sheet = client.open('OrganizacaoFinanceira').sheet1  # Ou o nome da sua planilha
+
+def adicionar_receita(descricao, valor, categoria):
+    data_hora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+    nova_linha = [descricao, f"{valor:.2f}", categoria, data_hora]
+    sheet.append_row(nova_linha)
+
+def obter_receitas():
+    return sheet.get_all_records()
+
+# Interface Streamlit
+st.title("Receitas")
+
+descricao = st.text_input("Descrição")
+valor = st.number_input("Valor", min_value=0.01, format="%.2f")
+categoria = st.text_input("Categoria")
+
+if st.button("Adicionar Receita"):
+    adicionar_receita(descricao, valor, categoria)
+    st.success("Receita adicionada!")
+
+receitas = obter_receitas()
+for r in receitas:
+    st.write(f"{r['descricao']} | R$ {r['valor']} | {r['categoria']} | {r['data_hora']}")
+
 
 st.set_page_config(
     page_title="Organização Financeira do Gabriel",
