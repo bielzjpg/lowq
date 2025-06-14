@@ -4,10 +4,13 @@ import json
 import pandas as pd
 import altair as alt
 
+import streamlit as st
+
 st.set_page_config(
     page_title="Organização Financeira do Gabriel",
     page_icon="https://cdn-icons-png.flaticon.com/512/1170/1170576.png",
-    layout="wide")
+    layout="wide"
+)
 
 st.markdown("""
 <style>
@@ -33,6 +36,7 @@ h1, .stMarkdown h1 {
     color: #EF1B24 !important;   /* vermelho vivo */
     font-size: 2.8rem !important;
     margin-bottom: 0.4rem !important;
+    text-align: center; /* centraliza o título */
 }
 
 h2, .stMarkdown h2 {
@@ -163,6 +167,10 @@ footer {
 }
 </style>
 """, unsafe_allow_html=True)
+
+# Título centralizado na página
+st.markdown("# Organização Financeira do Gabriel")
+
 
 
 
