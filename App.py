@@ -238,8 +238,7 @@ def receitas():
         if st.button("Excluir", key=f"del_rec_{i}"):
             st.session_state.receitas.pop(i)
             salvar_dados(st.session_state.receitas, st.session_state.despesas, st.session_state.planejamentos, st.session_state.notas)
-            st.rerun()
-
+            st.experimental_rerun()
 def despesas():
     st.title("Despesas")
     with st.form("form_despesa"):
@@ -263,7 +262,7 @@ def despesas():
         if st.button("Excluir", key=f"del_desp_{i}"):
             st.session_state.despesas.pop(i)
             salvar_dados(st.session_state.receitas, st.session_state.despesas, st.session_state.planejamentos, st.session_state.notas)
-            st.rerun()
+            st.experimental_rerun()
 
 def saldo():
     st.title("Saldo")
