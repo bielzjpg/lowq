@@ -1,0 +1,19 @@
+{
+    "receitas": [
+        {
+            "descricao": "Carro",
+            "valor": 500.0,
+            "categoria": "Indrive",
+            "data_hora": "14/06/2025 10:05:00"
+        },
+        {
+            "descricao": "trabalho",
+            "valor": 100.0,
+            "categoria": "salario",
+            "data_hora": "14/06/2025 10:08:53"
+        }
+    ],
+    "despesas": [],
+    "planejamentos": [],
+    "notas": "s"
+}
