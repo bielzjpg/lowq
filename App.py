@@ -4,24 +4,16 @@ import json
 import pandas as pd
 import altair as alt
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+from google.oauth2.service_account import Credentials
 
+# Carregando as credenciais do secrets
+credentials = Credentials.from_service_account_info(
+    st.secrets["google_service_account"],
+    scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+)
 
-# Definindo escopo da API
-scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-
-# Autenticação com o arquivo JSON baixado
-creds = ServiceAccountCredentials.from_json_keyfile_name('credentials.json', scope)
-client = gspread.authorize(creds)
-
-# Abrindo a planilha pelo nome
-sheet = client.open('OrganizacaoFinanceira').sheet1  # Ou o nome da sua planilha
-
-def adicionar_receita(descricao, valor, categoria):
-    data_hora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-    nova_linha = [descricao, f"{valor:.2f}", categoria, data_hora]
-    sheet.append_row(nova_linha)
-
+client = gspread.authorize(credentials)
+sheet = client.open("OrganizacaoFinanceira").sheet1
 def obter_receitas():
     return sheet.get_all_records()
 
