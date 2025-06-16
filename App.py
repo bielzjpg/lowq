@@ -3,30 +3,30 @@ from datetime import datetime, date
 import json
 import pandas as pd
 import altair as alt
+import streamlit as st
 import gspread
 from google.oauth2.service_account import Credentials
 
-# Configurando credenciais com secrets
+# Escopos necessários para acessar Google Sheets e Drive
 scope = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive"
 ]
 
-creds = Credentials.from_service_account_info(
+# Carrega as credenciais dos secrets
+credentials = Credentials.from_service_account_info(
     st.secrets["google_service_account"],
     scopes=scope
 )
 
-# Autorizando
-client = gspread.authorize(creds)
+# Autentica com o Google
+client = gspread.authorize(credentials)
 
-# Abrindo a planilha
+# Acessa a planilha
 sheet = client.open("OrganizacaoFinanceira").sheet1
 
-# Testando leitura
-data = sheet.get_all_records()
-st.write("Dados da planilha:")
-st.write(data)
+# Exibe os dados da planilha
+st.write(sheet.get_all_records())
 
 # Interface Streamlit
 st.title("Receitas")
