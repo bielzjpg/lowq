@@ -6,16 +6,27 @@ import altair as alt
 import gspread
 from google.oauth2.service_account import Credentials
 
-# Carregando as credenciais do secrets
-credentials = Credentials.from_service_account_info(
+# Configurando credenciais com secrets
+scope = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
+
+creds = Credentials.from_service_account_info(
     st.secrets["google_service_account"],
-    scopes=["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+    scopes=scope
 )
 
-client = gspread.authorize(credentials)
+# Autorizando
+client = gspread.authorize(creds)
+
+# Abrindo a planilha
 sheet = client.open("OrganizacaoFinanceira").sheet1
-def obter_receitas():
-    return sheet.get_all_records()
+
+# Testando leitura
+data = sheet.get_all_records()
+st.write("Dados da planilha:")
+st.write(data)
 
 # Interface Streamlit
 st.title("Receitas")
