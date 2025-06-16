@@ -17,9 +17,6 @@ if st.button("Adicionar Receita"):
     adicionar_receita(descricao, valor, categoria)
     st.success("Receita adicionada!")
 
-receitas = obter_receitas()
-for r in receitas:
-    st.write(f"{r['descricao']} | R$ {r['valor']} | {r['categoria']} | {r['data_hora']}")
 
 
 st.set_page_config(
